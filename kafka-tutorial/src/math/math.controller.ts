@@ -6,7 +6,7 @@ import { MATH_SERVICE } from './math.constants';
 @Controller('math')
 export class MathController {
   constructor(@Inject(MATH_SERVICE) private readonly client: ClientProxy) {}
-
+  
   // pub
   @Get()
   execute(): Observable<number> {
@@ -16,7 +16,7 @@ export class MathController {
   }
 
   // sub
-  @MessagePattern({ cmd: 'sum' })
+  @MessagePattern('sum')
   sum(data: number[]): number {
     return (data || []).reduce((a, b) => a + b);
   }

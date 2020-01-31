@@ -5,8 +5,12 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.connectMicroservice({
-    transport: Transport.TCP,
-    options: { retryAttempts: 5, retryDelay: 3000 },
+    transport: Transport.KAFKA,
+    options: {
+      client: {
+        brokers: ['localhost:9093'],
+      }
+    }
   });
 
   await app.startAllMicroservicesAsync();
