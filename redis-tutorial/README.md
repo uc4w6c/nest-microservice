@@ -18,3 +18,6 @@ $ get keyhoge
 ### キーに値をセット
 $ set keyhoge hogehoge
 
+## subscribeする
+$ subscribe "{\"cmd\":\"sum\"}_ack"
+ダブルウォートは\でエスケープしないとsubscribeできない

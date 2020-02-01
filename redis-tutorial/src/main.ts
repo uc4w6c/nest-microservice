@@ -21,12 +21,22 @@ import { AppModule } from './app.module';
 // Client機能も提供しつつRedisを利用する場合はこのような記載をする
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  /*
   app.connectMicroservice({
     transport: Transport.TCP,
     options: { retryAttempts: 5, retryDelay: 3000 },
   });
+  */
+ 
+  app.connectMicroservice({
+    transport: Transport.REDIS,
+    options: {
+      url: 'redis://localhost:6380'
+    },
+  });
 
   await app.startAllMicroservicesAsync();
+ 
   await app.listen(3001);
   console.log(await app.getUrl());
 }
