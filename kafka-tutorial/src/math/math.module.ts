@@ -18,7 +18,10 @@ import { MATH_SERVICE } from './math.constants';
           // consumerつけたら動き出した
           consumer: {
             groupId: 'math-consumer'
-          }
+          },
+          producer: {
+            allowAutoTopicCreation: true,
+          },
         }
       },
     ]),

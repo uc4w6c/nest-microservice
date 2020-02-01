@@ -9,6 +9,7 @@ export class MathController implements OnModuleInit {
 
   onModuleInit() {
     this.client.subscribeToResponseOf('math.sum');
+    this.client.connect();
   }
 
   // pub

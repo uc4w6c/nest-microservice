@@ -14,8 +14,12 @@ async function bootstrap() {
       },
       // consumerつけたら動き出した
       consumer: {
-        groupId: 'math-consumer'
-      }
+        groupId: 'math-consumer',
+        allowAutoTopicCreation: true,
+      },
+      producer: {
+        allowAutoTopicCreation: true,
+      },
     }
   });
 
