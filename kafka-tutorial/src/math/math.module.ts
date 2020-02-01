@@ -13,8 +13,9 @@ import { MATH_SERVICE } from './math.constants';
         options: {
           client: {
             clientId: 'math',
-            brokers: ['localhost:9093'],
+            brokers: ['localhost:9092'],
           },
+          // consumerつけたら動き出した
           consumer: {
             groupId: 'math-consumer'
           }
