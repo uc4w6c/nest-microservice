@@ -10,14 +10,16 @@ export class MathController {
   // pub
   @Get()
   execute(): Observable<number> {
-    const pattern = { cmd: 'sum' };
+    // const pattern = { cmd: 'sum' };
+    const pattern = 'sum';
     const data = [1, 2, 3, 4, 5];
     console.log('get');
     return this.client.send<number>(pattern, data);
   }
 
   // sub
-  @MessagePattern({ cmd: 'sum' })
+  // @MessagePattern({ cmd: 'sum' })
+  @MessagePattern('sum')
   sum(data: number[]): number {
     console.log('sum');
     return (data || []).reduce((a, b) => a + b);
