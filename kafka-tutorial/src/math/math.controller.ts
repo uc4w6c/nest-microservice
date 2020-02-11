@@ -9,6 +9,7 @@ export class MathController implements OnModuleInit {
 
   onModuleInit() {
     this.client.subscribeToResponseOf('math.sum');
+    this.client.subscribeToResponseOf('math.sum.test');
     this.client.connect();
   }
 
@@ -29,10 +30,25 @@ export class MathController implements OnModuleInit {
     const pattern = 'math.sum';
     const data = [1, 2, 3, 4, 5];
     // const result = await this.client.send<number>(pattern, {
+    console.log('send start')
     const result = await this.client.send(pattern, {
       numbers: data,
     }).toPromise();
+    console.log('send ent')
 
+    return result;
+  }
+
+  @Get('test')
+  async test(): Promise<Observable<any>> {
+    console.log('test');
+    const result = await this.client
+      .send('math.sum.test', {
+        value: {
+          numbers: 1,
+        },
+      })
+      .toPromise();
     return result;
   }
 }

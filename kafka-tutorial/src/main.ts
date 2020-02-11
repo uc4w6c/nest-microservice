@@ -10,16 +10,18 @@ async function bootstrap() {
     options: {
       client: {
         clientId: 'math',
-        brokers: ['localhost:9092'],
+        // brokers: ['localhost:9092'],
+        // brokers: ['kafka1:29092', 'kafka2:29093', 'kafka3:29094'],
+        brokers: ['localhost:9092', 'localhost:9093', 'localhost:9094'],
       },
-      // consumerつけたら動き出した
+      /*
       consumer: {
         groupId: 'math-consumer',
+        // allowAutoTopicCreation: true,
+      },*/
+      /*producer: {
         allowAutoTopicCreation: true,
-      },
-      producer: {
-        allowAutoTopicCreation: true,
-      },
+      },*/
     }
   });
 

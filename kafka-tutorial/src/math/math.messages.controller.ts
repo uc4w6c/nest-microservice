@@ -8,7 +8,14 @@ export class MathMessagesController {
 
   // sub
   @MessagePattern('math.sum')
-  sum(data: number[]): number {
-    return (data || []).reduce((a, b) => a + b);
+  // sum(data: number[]): number {
+  sum(data: any): number {
+    console.log('sub');
+    return (data.value.numbers || []).reduce((a, b) => a + b);
+  }
+
+  @MessagePattern('math.sum.test')
+  mathSumSyncWithoutKey(data: any) {
+    return (data.value.numbers || []).reduce((a, b) => a + b);
   }
 }
